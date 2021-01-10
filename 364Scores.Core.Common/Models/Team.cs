@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _364Scores.Core.Common.Models
+namespace Scores364.Core.Common.Models
 {
     public class Team
     {

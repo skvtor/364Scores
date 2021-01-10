@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "364Scores.Core.Dataprocessi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "364Scores.Core.Common", "364Scores.Core.Common\364Scores.Core.Common.csproj", "{7D4F020E-366B-4FEB-802D-368172A162F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.Core.EventQueue", "364Scores.Core.EventQueue\364Scores.Core.EventQueue.csproj", "{7E1B609D-5B92-4668-B98B-99F16D6FA520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.Core.GameStorage", "364Scores.Core.GameStorage\364Scores.Core.GameStorage.csproj", "{3819F1D7-55A2-472A-8EA2-C9446B1731C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{7D4F020E-366B-4FEB-802D-368172A162F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4F020E-366B-4FEB-802D-368172A162F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4F020E-366B-4FEB-802D-368172A162F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E1B609D-5B92-4668-B98B-99F16D6FA520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E1B609D-5B92-4668-B98B-99F16D6FA520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E1B609D-5B92-4668-B98B-99F16D6FA520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E1B609D-5B92-4668-B98B-99F16D6FA520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 
 namespace Scores364.Core.Common.Interfaces
 {
-    public interface IEventQueueWriter
+    public interface IEventQueueClient: IEventQueueWriter, IEventQueueReader
     {
-        Task Enqueue(Game game);
     }
 }

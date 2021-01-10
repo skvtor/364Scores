@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _364Scores.Core.Common.Interfaces
+namespace Scores364.Core.Common.Interfaces
 {
     public interface ISystemConfig
     {

@@ -1,8 +1,8 @@
-﻿using _364Scores.Core.Common.Models;
+﻿using Scores364.Core.Common.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace _364Scores.Core.Common.Interfaces
+namespace Scores364.Core.Common.Interfaces
 {
     public interface IEventQueueReader
     {
