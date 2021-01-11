@@ -6,6 +6,6 @@ namespace Scores364.Core.Common.Interfaces
 {
     public interface ISystemConfig
     {
-        T GetConfigSection<T>();
+        T GetConfigSection<T>() where T : class, new();
     }
 }

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>_364Scores.DemoWebMultiHoster</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\364Scores.Api.Manager\364Scores.Api.Manager.csproj" />
+    <ProjectReference Include="..\364Scores.Core.Common\364Scores.Core.Common.csproj" />
+    <ProjectReference Include="..\364Scores.Core.Dataprocessing\364Scores.Core.Dataprocessing.csproj" />
+    <ProjectReference Include="..\364Scores.Core.Datasources\364Scores.Core.Datasources.csproj" />
+    <ProjectReference Include="..\364Scores.Core.EventQueue\364Scores.Core.EventQueue.csproj" />
+    <ProjectReference Include="..\364Scores.Core.GameStorage\364Scores.Core.GameStorage.csproj" />
+  </ItemGroup>
+
+</Project>

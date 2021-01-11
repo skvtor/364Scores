@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.Core.EventQueue",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.Core.GameStorage", "364Scores.Core.GameStorage\364Scores.Core.GameStorage.csproj", "{3819F1D7-55A2-472A-8EA2-C9446B1731C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.DemoWebMultiHoster", "364Scores.DemoWebMultiHoster\364Scores.DemoWebMultiHoster.csproj", "{5A81E56C-748C-4A1D-A491-1C3FB5F52905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "364Scores.Api.Manager", "364Scores.Api.Manager\364Scores.Api.Manager.csproj", "{18C080A6-1028-4AEF-B296-F9805A45B1B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3819F1D7-55A2-472A-8EA2-C9446B1731C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A81E56C-748C-4A1D-A491-1C3FB5F52905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A81E56C-748C-4A1D-A491-1C3FB5F52905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A81E56C-748C-4A1D-A491-1C3FB5F52905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A81E56C-748C-4A1D-A491-1C3FB5F52905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C080A6-1028-4AEF-B296-F9805A45B1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C080A6-1028-4AEF-B296-F9805A45B1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C080A6-1028-4AEF-B296-F9805A45B1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C080A6-1028-4AEF-B296-F9805A45B1B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

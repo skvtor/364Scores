@@ -2,12 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>_364Scores.Core.Datasources</RootNamespace>
+    <RootNamespace>_364Scores.Api.Manager</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\364Scores.Core.Common\364Scores.Core.Common.csproj" />

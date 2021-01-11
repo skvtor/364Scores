@@ -7,7 +7,7 @@ namespace Scores364.Core.EventQueue
 {
     public class SimplestLocalQueueClient : IEventQueueClient
     {
-        ConcurrentQueue<Game> _queue = new ConcurrentQueue<Game>();
+        private static ConcurrentQueue<Game> _queue = new ConcurrentQueue<Game>();
 
         public Task<Game> Dequeue()
         {

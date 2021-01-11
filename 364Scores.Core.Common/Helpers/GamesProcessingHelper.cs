@@ -9,7 +9,7 @@ namespace Scores364.Core.Common.Helpers
     {
         public static string BuildKey(Game game)
         {
-            return "";
+            return game.SportTypeId.ToString();
         }
     }
 }

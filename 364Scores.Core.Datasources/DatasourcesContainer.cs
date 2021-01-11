@@ -27,7 +27,7 @@ namespace Scores364.Core.Datasources
             _eventQueue = eventQueue;
             _gameStorage = gameStorage;
         }
-        public Task Start()
+        public void Start()
         {
             ReloadConfig();
 
@@ -37,7 +37,7 @@ namespace Scores364.Core.Datasources
                 _datasources.Add(ds);
             }
 
-            return ProcessingLoop();
+            ProcessingLoop();
         }
         public void Stop()
         {
@@ -48,7 +48,7 @@ namespace Scores364.Core.Datasources
             }
         }
 
-        private async Task ProcessingLoop()
+        private async void ProcessingLoop()
         {
             var delay = Config.DelayMs;
 
@@ -73,6 +73,7 @@ namespace Scores364.Core.Datasources
                         list.Add(ds.CheckUpdate(_eventQueue, _gameStorage, cancellationToken));
 
                     await Task.WhenAll(list).ConfigureAwait(false);
+                    await Task.Delay(Config.DelayMs).ConfigureAwait(false);
                 }
             }
             finally

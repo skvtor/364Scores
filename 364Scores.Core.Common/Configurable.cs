@@ -4,6 +4,7 @@ using System.Threading;
 namespace Scores364.Core.Common
 {
     public abstract class Configurable<T>
+        where T : class, new()
     {
         protected T Config { get { return _configurationBuffer[_configurationIndex]; } }
 
