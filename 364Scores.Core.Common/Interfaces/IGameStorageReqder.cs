@@ -8,7 +8,7 @@ namespace Scores364.Core.Common.Interfaces
 {
     public interface IGameStorageReader
     {
-        Task<IDictionary<string, Team>> ResolveTeamInfo(IEnumerable<string> teamLocalNames, Guid sportId);
+        Task<IDictionary<string, Team>> ResolveTeamByName(IEnumerable<string> name, Guid sportId, string languageId = null);
         Task<IEnumerable<Game>> FilterAlreadyPresent(IEnumerable<Game> games);
     }
 }

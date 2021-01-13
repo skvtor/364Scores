@@ -13,7 +13,7 @@ namespace Scores364.Core.Common.Helpers
             return $"{game.Time.ToString("u")}{game.SportTypeId.ToString("N")}{game.CompetitionTypeId}{game.Team1Id.ToString("N")}{game.Team2Id.ToString("N")}";
         }
 
-        public static string BuildGameDescriptorKey(GameDescriptor game)
+        public static string BuildGameInfoKey(GameInfo game)
         {
             //todo:
             return $"{game.Time.ToString("u")}{game.TeamName1}{game.TeamName2}";

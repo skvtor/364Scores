@@ -8,5 +8,6 @@ namespace Scores364.Core.Common.Models
     {
         public DateTime From { get; set; }
         public DateTime To { get; set; }
+        public string LanguageId { get; set; }
     }
 }

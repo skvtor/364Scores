@@ -7,6 +7,6 @@ namespace Scores364.Core.Common.Interfaces
     public interface IGameStorageClient: IGameStorageReader
     {
         Task AddGames(IEnumerable<Game> games);
-        Task<List<Game>> GetGames(GameFilteringOptions options);
+        Task<List<GameInfo>> GetGameInfos(GameFilteringOptions options);
     }
 }

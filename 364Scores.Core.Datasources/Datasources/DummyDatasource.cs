@@ -33,7 +33,7 @@ namespace Scores364.Core.Datasources.Datasources
             if (index1 == index2)
                 index2 = 9;
 
-            var teams = (await storage.ResolveTeamInfo(new[] { _teams[index1], _teams[index2] }, Guid.Empty))
+            var teams = (await storage.ResolveTeamByName(new[] { _teams[index1], _teams[index2] }, Guid.Empty))
                 .Select(x=>x.Value)
                 .ToArray();
 

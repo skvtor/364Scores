@@ -8,6 +8,6 @@ namespace Scores364.Api.Manager.Models
 {
     public class GamesPage
     {
-        public List<Game> Games { get; set; }
+        public List<GameInfo> Games { get; set; }
     }
 }

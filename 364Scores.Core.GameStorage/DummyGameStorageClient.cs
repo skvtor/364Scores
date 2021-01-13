@@ -11,8 +11,11 @@ namespace Scores364.Core.GameStorage
 {
     public class DummyGameStorageClient : IGameStorageClient
     {
+        private static object _teamLocker = new object();
+        private static Dictionary<string, Team> _indexOfTeamNames = new Dictionary<string, Team>();
+        private static Dictionary<Guid, Team> _indexOfTeamIds = new Dictionary<Guid, Team>();
         private static Dictionary<string, Game> _tableOfGames = new Dictionary<string, Game>();
-        private static Dictionary<string, Team> _tableOfTeams = new Dictionary<string, Team>();
+
 
         public Task AddGames(IEnumerable<Game> games)
         {
@@ -41,14 +44,14 @@ namespace Scores364.Core.GameStorage
             return Task.FromResult((IEnumerable<Game>)retVal);
         }
 
-        public Task<IDictionary<string, Team>> ResolveTeamInfo(IEnumerable<string> teamLocalNames, Guid sportId)
+        public Task<IDictionary<string, Team>> ResolveTeamByName(IEnumerable<string> names, Guid sportId, string languageId = null)
         {
             var retVal = new Dictionary<string, Team>();
-            lock (_tableOfTeams)
+            lock (_teamLocker)
             {
-                foreach(var name in teamLocalNames)
+                foreach(var name in names)
                 {
-                    if(!_tableOfTeams.TryGetValue(name, out var team))
+                    if(!_indexOfTeamNames.TryGetValue(name, out var team))
                     {
                         team = new Team
                         {
@@ -56,7 +59,8 @@ namespace Scores364.Core.GameStorage
                             Name = name,
                             SportTypeId = sportId
                         };
-                        _tableOfTeams.Add(name, team);
+                        _indexOfTeamNames.Add(name, team);
+                        _indexOfTeamIds.Add(team.Id, team);
                     }
                     retVal.TryAdd(team.Name, team);
                 }
@@ -64,12 +68,23 @@ namespace Scores364.Core.GameStorage
             return Task.FromResult((IDictionary<string, Team>)retVal);
         }
 
-        public Task<List<Game>> GetGames(GameFilteringOptions options)
+        public Task<List<GameInfo>> GetGameInfos(GameFilteringOptions options)
         {
             lock (_tableOfGames)
             {
-                var retVal = _tableOfGames.Values.Where(x => x.Time >= options.From && x.Time <= options.To).ToList();
-                return Task.FromResult(retVal);
+                lock (_teamLocker)
+                {
+                    var games = _tableOfGames.Values.Where(x => x.Time >= options.From && x.Time <= options.To).ToList();
+
+                    var retVal = games.Select(x => new GameInfo
+                    {
+                        Time = x.Time,
+                        TeamName1 = _indexOfTeamIds[x.Team1Id].Name,
+                        TeamName2 = _indexOfTeamIds[x.Team2Id].Name,
+                    }).ToList();
+
+                    return Task.FromResult(retVal);
+                }
             }
         }
     }

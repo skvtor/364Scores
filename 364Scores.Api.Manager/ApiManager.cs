@@ -17,7 +17,7 @@ namespace Scores364.Api.Manager
 
         public async Task<GamesPage> GetGamesPage(GamesPageParams pageParam)
         {
-            var games = await _gamesStorage.GetGames(new GameFilteringOptions { From = pageParam.From, To = pageParam.To });
+            var games = await _gamesStorage.GetGameInfos(new GameFilteringOptions { From = pageParam.From, To = pageParam.To });
 
             return new GamesPage
             {

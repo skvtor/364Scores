@@ -32,25 +32,31 @@ namespace Scores364.Core.Datasources.Datasources
 
         public async Task CheckUpdate(IEventQueueWriter queue, IGameStorageReader storage, CancellationToken cancellationToken)
         {
-            var gameDescriptors = await GetInfoByDate(new DateTime(2021, 01, 14));
-            var filteredGameDescriptors = FilterLocal(gameDescriptors);
-            var games = await Resolve(filteredGameDescriptors, storage);
+            var dt = DateTime.UtcNow;
+            var games3days = new List<Game>();
+            for(int i =0; i <3; i++)
+            {
+                var date = (new DateTime(dt.Year, dt.Month, dt.Day)).AddDays(i);
+                var gameDescriptors = await GetInfoByDate(date);
+                var filteredGameDescriptors = FilterLocal(gameDescriptors);
+                var games = await Resolve(filteredGameDescriptors, storage);
+                games3days.AddRange(games);
+            }
 
-            if (games.Any())
-                await queue.Enqueue(games);
+            if (games3days.Any())
+                await queue.Enqueue(games3days);
         }
 
-        protected async Task<List<GameDescriptor>> GetInfoByDate(DateTime date)
+        protected async Task<List<GameInfo>> GetInfoByDate(DateTime date)
         {
             //https://superplacar.com.br/proximas-partidas/2021-01-14
-            var dt = DateTime.UtcNow;
-            var response = await _client.GetAsync(string.Format(_urlTemplate, dt.Year, dt.Month, dt.Day));
+            var response = await _client.GetAsync(string.Format(_urlTemplate, date.Year, date.Month, date.Day));
             var content = await response.Content.ReadAsStringAsync();
             var html = new HtmlDocument();
             html.LoadHtml(content);
             var nodes = html.DocumentNode.SelectNodes("//div[starts-with(@id, 'dvPartida_')]");
 
-            var games = new List<GameDescriptor>();
+            var games = new List<GameInfo>();
             foreach(var node in nodes)
             {
                 var timeParts = node.SelectSingleNode(".//div[contains(@class, 'col-xs-6 col-sm-12 hora')]")
@@ -63,9 +69,9 @@ namespace Scores364.Core.Datasources.Datasources
                 var team1Name = teams[0].SelectSingleNode(".//span[contains(@class, 'visible-xs')]").InnerText;
                 var team2Name = teams[1].SelectSingleNode(".//span[contains(@class, 'visible-xs')]").InnerText;
 
-                games.Add(new GameDescriptor
+                games.Add(new GameInfo
                 {
-                    Time = new DateTime(dt.Year, dt.Month, dt.Day, int.Parse(timeParts[0]), int.Parse(timeParts[1]), 0),
+                    Time = new DateTime(date.Year, date.Month, date.Day, int.Parse(timeParts[0]), int.Parse(timeParts[1]), 0),
                     TeamName1 = team1Name,
                     TeamName2 = team2Name
                 });
@@ -73,18 +79,18 @@ namespace Scores364.Core.Datasources.Datasources
 
             return games;
         }
-        protected async Task<List<Game>> Resolve(List<GameDescriptor> gameDescriptors, IGameStorageReader storage)
+        protected async Task<List<Game>> Resolve(List<GameInfo> gameInfos, IGameStorageReader storage)
         {
-            var teamNames = gameDescriptors.Select(x => x.TeamName1).ToHashSet();
-            teamNames.UnionWith(gameDescriptors.Select(x => x.TeamName2));
+            var teamNames = gameInfos.Select(x => x.TeamName1).ToHashSet();
+            teamNames.UnionWith(gameInfos.Select(x => x.TeamName2));
 
             var teamNamesToResolve = teamNames.Where(x => !_teamsLocalCache.ContainsKey(x)).ToList();
-            var resolvedTeams = await storage.ResolveTeamInfo(teamNamesToResolve, _sportId);
+            var resolvedTeams = await storage.ResolveTeamByName(teamNamesToResolve, _sportId);
             foreach (var rt in resolvedTeams)
                 _teamsLocalCache.TryAdd(rt.Key, rt.Value);
 
             var retVal = new List<Game>();
-            foreach (var gd in gameDescriptors)
+            foreach (var gd in gameInfos)
             {
                 var game = new Game()
                 {
@@ -109,9 +115,9 @@ namespace Scores364.Core.Datasources.Datasources
 
             return retVal;
         }
-        protected List<GameDescriptor> FilterLocal(List<GameDescriptor> games)
+        protected List<GameInfo> FilterLocal(List<GameInfo> games)
         {
-            var retVal = new List<GameDescriptor>();
+            var retVal = new List<GameInfo>();
             foreach (var g in games)
             {
                 var key = g.Key;

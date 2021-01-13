@@ -17,7 +17,7 @@ namespace Scores364.DemoWebMultiHoster.Demo
                 {
                     Datasources = new List<DatasourceInfo>
                     {
-                        new DatasourceInfo { Id = "ds1", TypeId = "DummyDatasource" },
+                        //new DatasourceInfo { Id = "ds1", TypeId = "DummyDatasource" },
                         new DatasourceInfo { Id = "ds2", TypeId = "Superplacar3DaysDatasource" }
                     },
                     DelayMs = 1000
