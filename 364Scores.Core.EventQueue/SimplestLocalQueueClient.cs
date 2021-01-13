@@ -1,6 +1,7 @@
 ﻿using Scores364.Core.Common.Interfaces;
 using Scores364.Core.Common.Models;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Scores364.Core.EventQueue
@@ -18,9 +19,11 @@ namespace Scores364.Core.EventQueue
             return Task.FromResult((Game)null);
         }
 
-        public Task Enqueue(Game game)
+        public Task Enqueue(IEnumerable<Game> games)
         {
-            _queue.Enqueue(game);
+            foreach(var game in games)
+                _queue.Enqueue(game);
+
             return Task.FromResult(1);
         }
     }

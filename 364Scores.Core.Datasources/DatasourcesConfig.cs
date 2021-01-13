@@ -14,6 +14,7 @@ namespace Scores364.Core.Datasources
     {
         public string Id { get; set; }
         public string TypeId { get; set; }
+        public Dictionary<string, string> Config { get; set; }
     }
 
 }

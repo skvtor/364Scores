@@ -35,7 +35,7 @@ namespace Scores364.DemoWebMultiHoster
             services.AddScoped<IEventQueueClient, SimplestLocalQueueClient>();
             services.AddScoped<IEventQueueReader, SimplestLocalQueueClient>();
             services.AddScoped<IEventQueueWriter, SimplestLocalQueueClient>();
-            services.AddScoped<IGameStorageClient, SimplestGameStorageClient>();
+            services.AddScoped<IGameStorageClient, DummyGameStorageClient>();
 
             services.AddSingleton<ISystemConfig, LocalConfig>();
             services.AddSingleton<IDatasourcesFabric, SimplestDatasourcesFabric>();

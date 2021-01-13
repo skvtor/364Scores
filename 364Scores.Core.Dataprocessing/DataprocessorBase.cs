@@ -65,7 +65,7 @@ namespace Scores364.Core.Dataprocessing.Base
                     if (game == null)
                         break;
 
-                    var key = GamesProcessingHelper.BuildKey(game);
+                    var key = GamesProcessingHelper.BuildGameKey(game);
                     if (gamesPage.TryAdd(key, game))
                         itemsToProcess--;
                 }

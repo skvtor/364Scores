@@ -17,7 +17,7 @@ namespace Scores364.DemoWebMultiHoster.Controllers
         }
 
         [HttpGet]
-        public Task<GamesPage> Get(GamesPageParams request)
+        public Task<GamesPage> Get([FromQuery]GamesPageParams request)
         {
             return _manager.GetGamesPage(request);
         }

@@ -1,4 +1,5 @@
-﻿using Scores364.Core.Datasources;
+﻿using Scores364.Core.Datasources.Datasources;
+using Scores364.Core.Datasources;
 using Scores364.Core.Datasources.Datasources;
 using Scores364.Core.Datasources.Interfaces;
 using System;
@@ -14,7 +15,20 @@ namespace Scores364.DemoWebMultiHoster.Demo
 
         public IDatasource Build(DatasourceInfo dsInfo)
         {
-            return new DummyDatasource();
+            IDatasource retVal;
+            switch (dsInfo.TypeId)
+            {
+                case "Superplacar3DaysDatasource":
+                    retVal = new Superplacar3DaysDatasource();
+                    break;
+
+                default:
+                    retVal= new DummyDatasource();
+                    break;
+            }
+
+            retVal.Configure(dsInfo.Config);
+            return retVal;
         }
     }
 }

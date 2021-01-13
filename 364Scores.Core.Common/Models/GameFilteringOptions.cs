@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace Scores364.Api.Manager.Models
+namespace Scores364.Core.Common.Models
 {
-    public class GamesPageParams
+    public class GameFilteringOptions
     {
         public DateTime From { get; set; }
         public DateTime To { get; set; }
