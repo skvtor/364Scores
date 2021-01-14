@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace Scores364.Api.Manager.Models
 {
-    public class GamesPageParams
+    public class GamesPageFirstParams
     {
         public string LanguageId { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public DateTime? From { get; set; }
     }
 }

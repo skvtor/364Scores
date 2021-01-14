@@ -16,6 +16,7 @@ using Scores364.Core.Common.Interfaces;
 using Scores364.Core.EventQueue;
 using Scores364.Core.GameStorage;
 using Scores364.Core.Datasources.Interfaces;
+using Scores364.Core.Caching;
 
 namespace Scores364.DemoWebMultiHoster
 {
@@ -38,6 +39,7 @@ namespace Scores364.DemoWebMultiHoster
             services.AddScoped<IGameStorageClient, DummyGameStorageClient>();
 
             services.AddSingleton<ISystemConfig, LocalConfig>();
+            services.AddSingleton<ICacheManager, CacheManager>();
             services.AddSingleton<IDatasourcesFabric, SimplestDatasourcesFabric>();
 
             services.AddHostedService<DemoService>();

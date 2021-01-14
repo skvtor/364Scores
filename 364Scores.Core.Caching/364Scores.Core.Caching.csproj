@@ -2,13 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>_364Scores.Api.Manager</RootNamespace>
+    <RootNamespace>_364Scores.Core.Caching</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="protobuf-net" Version="3.0.73" />
-    <PackageReference Include="protobuf-net.Core" Version="3.0.73" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\364Scores.Core.Common\364Scores.Core.Common.csproj" />

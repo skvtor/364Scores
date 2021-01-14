@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\364Scores.Api.Manager\364Scores.Api.Manager.csproj" />
+    <ProjectReference Include="..\364Scores.Core.Caching\364Scores.Core.Caching.csproj" />
     <ProjectReference Include="..\364Scores.Core.Common\364Scores.Core.Common.csproj" />
     <ProjectReference Include="..\364Scores.Core.Dataprocessing\364Scores.Core.Dataprocessing.csproj" />
     <ProjectReference Include="..\364Scores.Core.Datasources\364Scores.Core.Datasources.csproj" />

@@ -74,7 +74,12 @@ namespace Scores364.Core.GameStorage
             {
                 lock (_teamLocker)
                 {
-                    var games = _tableOfGames.Values.Where(x => x.Time >= options.From && x.Time <= options.To).ToList();
+                    var games = _tableOfGames.Values
+                        .OrderByDescending(x => x.Time)
+                        .Where(x => x.Time >= options.From)
+                        .Skip(options.PageSize * options.PageIndex)
+                        .Take(options.PageSize)
+                        .ToList();
 
                     var retVal = games.Select(x => new GameInfo
                     {

@@ -1,13 +1,13 @@
-﻿using Scores364.Core.Common.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Scores364.Api.Manager.Models
 {
-    public class GamesPage
+    public class GamesPageOffsetParams
     {
-        public List<GameInfo> Games { get; set; }
+        public string Token { get; set; }
+        public int? Offset { get; set; }
     }
 }
