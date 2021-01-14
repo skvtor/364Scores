@@ -14,6 +14,8 @@ namespace Scores364.Api.Manager.Models
         [ProtoMember(2)]
         public int Offset { get; set; }
         [ProtoMember(3)]
+        public int PageSize { get; set; }
+        [ProtoMember(4)]
         public string LanguageId { get; set; }
 
         public static GamesPageToken Deserialize(string token)

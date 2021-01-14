@@ -12,7 +12,7 @@ namespace Scores364.Api.Manager
         IGameStorageClient _gamesStorage;
         ICacheManager _cache;
 
-        private const int PageSize = 10;
+        private const int PageSize = 5;
 
         public ApiManager(IGameStorageClient gamesStorage, ICacheManager cache)
         {
@@ -26,6 +26,7 @@ namespace Scores364.Api.Manager
             {
                 From = pageParam.From ?? new DateTime(),
                 Offset = 0,
+                PageSize = PageSize,
                 LanguageId = pageParam.LanguageId,
                 
             };
@@ -51,7 +52,7 @@ namespace Scores364.Api.Manager
                     From = token.From,
                     LanguageId = token.LanguageId,
                     PageIndex = token.Offset,
-                    PageSize = PageSize
+                    PageSize = token.PageSize
                 });
 
                 page = new GamesPage
